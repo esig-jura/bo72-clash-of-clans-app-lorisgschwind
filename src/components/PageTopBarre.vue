@@ -1,13 +1,22 @@
 <script setup>
+// Definition des propritéts du composant
 
+  defineProps({
+  or: {
+  type: Number,
+  required: true
+}
+})
 </script>
+
 
 <template>
 
   <aside class="solde-or">
     <div>
       <img src="/img/piece-or-note.jpg" alt="Solde Or">
-      20 000 pièces d'or
+      {{ or.toLocaleString('fr-CH') }}
+      pièces d'or
     </div>
     <div>
       <img src="/img/troupes-icon.png" alt="Troupes">

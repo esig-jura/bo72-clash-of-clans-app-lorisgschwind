@@ -8,6 +8,9 @@ import PageHeader from "@/components/PageHeader.vue";
 // Tableau des troupes
 const troupes = ref([])
 
+// Pièces d'or
+let totalOr = ref(100000);
+
 // Quand le composant est monté, on va chercher les données
 onMounted(() => {
   fetch('https://cocapi.divtec.me/troupes') //Appel à l'API
@@ -19,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-<PageTopBarre />
+<PageTopBarre :or = "totalOr" />
 
   <PageHeader />
   <main>
