@@ -1,5 +1,5 @@
 <script setup>
-const emit = defineEmits(["former"]);
+
 const props = defineProps({
   or: {
     type: Number,
@@ -11,10 +11,11 @@ const props = defineProps({
   }
 })
 
+//Evenement des composants
+const emit = defineEmits(["former"]);
+
 //Méthode qui émettra l'événement former avec la troupe en paramètre
-const formerTroupe = (troupe) => {
-  emit("former", troupe);
-};
+
 </script>
 
 <template>
@@ -29,12 +30,17 @@ const formerTroupe = (troupe) => {
     <h2 class="name">{{troupe.nom}}</h2>
     <button
         :style="`background-color: ${troupe.couleur}`"
-        @click="formerTroupe(troupe)"
+        @click="emit('former', troupe)"
         :disabled="or < troupe.cout"
-    >
-      Former
+    >Former
       <img src="/img/piece-or.png" alt="Former" />
     </button>
+
+      <router-link :to="{name: 'fiche-troupe', params: {id:troupe.id}}">
+        <button>Détails</button>
+      </router-link>
+
+
     <p class="description">{{troupe.description}}</p>
     <footer>
       <div class="training"

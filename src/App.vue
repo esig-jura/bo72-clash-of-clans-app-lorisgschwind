@@ -13,6 +13,9 @@ const description = 'Construire un village, former un clan et participer à des 
 // Pièces d'or
 let totalOr = ref(100000);
 
+//Tableau des troupes formées
+let nbTroupesFormées = ref(0);
+
 // Quand le composant est monté, on va chercher les données
 onMounted(() => {
   fetch('https://cocapi.divtec.me/troupes') //Appel à l'API
@@ -29,12 +32,14 @@ function formerTroupe(troupe) {
     return
   }
   totalOr.value -= troupe.cout
-  troupesFormees.value.push(troupe)
+  nbTroupesFormées.value +=1;
 }
 </script>
 
 <template>
-<PageTopBarre :or = "totalOr" />
+  <RouterView />
+
+<PageTopBarre :or = "totalOr" :troupesFormees="nbTroupesFormées"/>
 
   <PageHeader :titre="titre" :description="description" />
   <main>

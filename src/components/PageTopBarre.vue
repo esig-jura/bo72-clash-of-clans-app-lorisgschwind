@@ -5,8 +5,14 @@
   or: {
   type: Number,
   required: true
-}
+},
+
+troupesFormees:{
+      type: Number,
+      required: true
+    }
 })
+
 
 console.log(props.or);
 </script>
@@ -22,7 +28,7 @@ console.log(props.or);
     </div>
     <div>
       <img src="/img/troupes-icon.png" alt="Troupes">
-      0 troupes formées
+      {{ troupesFormees }} troupes formées
     </div>
   </aside>
 
